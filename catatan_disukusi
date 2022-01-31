@@ -1,0 +1,11 @@
+Tanggal 31 Januari 2022
+
+1. Form Lacak dihapus	Karena sudah  ada di dashboard						
+2. Tabel disposisi dibuat menjadi 5 tabel							
+3. Pada Tabel Disposisi	Buat 4 Kolom	
+    1. Nomor Surat	(Select dari tabel surat)
+    2. Perihal	(Select dari tabel surat)
+    3. Disposisi	(Dropdown ambil dari tabel keterangan)
+    4. Tujuan	(Dropdown dari Role)
+    5. Submit	
+							
