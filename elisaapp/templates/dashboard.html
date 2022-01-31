@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow mb-3">
+    <div class="container">
+    <a class="navbar-brand" href="#">Elisa</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" role="button">
+          Login
+        </a>
+      </li>
+    </ul>
+</div>
+</nav>
+
+<!-- Content -->
+<div class="container">
+    <h1 class="mb-5">Dashboard</h1>
+    <div class="col-3 mb-2">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary" type="submit">Search</button>
+          </form>
+    </div>
+
+    <!-- tabel -->
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th class="col-1" scope="col">No.</th>
+                <th class="col-6" scope="col" colspan="3">Identitas Surat</th>
+                <th class="col-5" scope="col" colspan="5">Disposisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <th scope="row">No. Surat</th>
+                <th scope="row">Tanggal</td>
+                <th scope="row">Prihal</th>
+                <th scope="row">D1</th>
+                <th scope="row">D2</th>
+                <th scope="row">D3</th>
+                <th scope="row">D4</th>
+                <th scope="row">D5</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>123</td>
+                <td>12 Agustus 2021</td>
+                <td>Undangan</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
