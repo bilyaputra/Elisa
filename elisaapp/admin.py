@@ -1,26 +1,22 @@
-from atexit import register
 from re import search
 from django.contrib import admin
-from elisaapp.models import Pic, Role, Keterangan, Surat, User, Disposisi
+from elisaapp.models import Surat
+from elisaapp.models import Role
+from elisaapp.models import Keterangan
+from elisaapp.models import User
+from elisaapp.models import Jabatan
 
 
 class SuratAdmin(admin.ModelAdmin):
-    list_display = ['nomor_surat', 'pic_id', 'perihal', 'tanggal_masuk', 'estimasi_deadline']
+    list_display = ['id_pic', 'nama_pic', 'instansi_asal', 'tanggal_surat', 'nomor_surat', 'perihal', 'tanggal_masuk', 'estimasi_deadline']
     search_fields = ['nomor_surat']
-    list_filter = ['perihal']
+    # list_filter = ['perihal']
     list_per_page = 10
-
-class PicAdmin(admin.ModelAdmin):
-    list_display = ['nama_pic', 'kontak_pic', 'instansi_asal']
-    list_filter = ['instansi_asal']
-    list_per_page = 10
-
 
 
 # Register your models here.
-admin.site.register(Pic, PicAdmin)
+admin.site.register(Surat, SuratAdmin)
 admin.site.register(Role)
 admin.site.register(Keterangan)
-admin.site.register(Surat, SuratAdmin)
 admin.site.register(User)
-admin.site.register(Disposisi)
+admin.site.register(Jabatan)
