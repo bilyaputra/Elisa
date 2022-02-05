@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <meta http-equiv="refresh" content="0; url={% url 'input_surat' %}">
+{% else %}
+    <div class="login">
+        <div class="container">
+            <h4 class="text-center">FORM LOGIN</h4>
+            <hr>
+
+            <form method="post">
+            {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <input type="text" class="form-control" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fas fa-unlock-alt"></i>
+                        </div>
+                        <input type="password" class="form-control" name="password" autocomplete="current-password" required id="id_password">
+                    </div>
+                </div>
+                <div class="tombol text-end"><button type="submit" class="btn btn-secondary">Login</button></div>
+            </form>
+        </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}
