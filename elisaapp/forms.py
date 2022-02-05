@@ -3,7 +3,7 @@ from django import forms
 from django.forms import ModelForm
 from django import forms
 import phonenumbers
-from elisaapp.models import Surat, Role
+from elisaapp.models import Surat
 
 class FormSurat(ModelForm):
     class Meta:
@@ -20,14 +20,4 @@ class FormSurat(ModelForm):
             'kontak_pic' : forms.TextInput({'class':'form-control'}),
             'email_pic' : forms.TextInput({'class':'form-control'}),
             'instansi_asal' : forms.TextInput({'class':'form-control'}),
-        }
-
-class formRole(ModelForm):
-    class Meta:
-        model = Role
-        fields = '__all__'
-
-        widgets = {
-            'nama_role' : forms.TextInput({'class':'form-control'}),
-            'fase' : forms.NumberInput({'class':'form-control'}),
         }
