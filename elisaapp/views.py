@@ -56,4 +56,20 @@ def input_surat(request):
     return render(request,'input_surat.html', konteks)
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    surats = Surat.objects.all()
+
+    konteks = {
+        'surats' : surats,
+    }
+
+    return render(request, 'dashboard.html', konteks)
+
+@login_required(login_url=settings.LOGIN_URL)
+def arsip(request):
+    surats = Surat.objects.all()
+
+    konteks = {
+        'surats' : surats,
+    }
+
+    return render(request, 'arsip.html', konteks)

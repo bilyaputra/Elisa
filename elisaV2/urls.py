@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import Settings, settings
 from django.urls import path
-from elisaapp.views import input_surat, dashboard
+from elisaapp.views import input_surat, dashboard, arsip
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='dashboard'), name='logout'),
     path('input-surat/', input_surat, name='input_surat'),
     path('dashboard/', dashboard, name='dashboard'),
-    # path('arsip/', arsip)
+    path('arsip/', arsip, name='arsip'),
     # path('disposisi/', disposisi)
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

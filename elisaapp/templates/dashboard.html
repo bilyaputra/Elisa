@@ -1,8 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
 <!-- Navbar -->
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow mb-3">
+    <div class="container">
+    <a class="navbar-brand" href="{% url 'input_surat' %}">Elisa</a>
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="rounded-circle"
+                    src="{% static 'images/undraw_profile.svg' %}"
+                    height="30"
+                    alt=""
+                    loading="lazy">
+              {{ user }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+            </ul>
+          </li>
+    </ul>
+    </div>
+</nav>
+{% else %}
 <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow mb-3">
     <div class="container">
     <a class="navbar-brand" href="#">Elisa</a>
@@ -13,8 +38,9 @@
         </a>
       </li>
     </ul>
-</div>
+    </div>
 </nav>
+{% endif %}
 
 <!-- Content -->
 <div class="container">
@@ -38,26 +64,30 @@
         <tbody>
             <tr>
                 <th scope="row"></th>
-                <th scope="row">No. Surat</th>
-                <th scope="row">Tanggal</td>
-                <th scope="row">Prihal</th>
+                <th scope="row">Nomor Surat</th>
+                <th scope="row">Tanggal Masuk</td>
+                <th scope="row">Perihal</th>
                 <th scope="row">D1</th>
                 <th scope="row">D2</th>
                 <th scope="row">D3</th>
                 <th scope="row">D4</th>
                 <th scope="row">D5</th>
             </tr>
+            {% for surat in surats %}
+
             <tr>
-                <td>1</td>
-                <td>123</td>
-                <td>12 Agustus 2021</td>
-                <td>Undangan</td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ surat.nomor_surat }}</td>
+                <td>{{ surat.tanggal_masuk }}</td>
+                <td>{{ surat.perihal }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
+
+            {% endfor %}
         </tbody>
     </table>
 </div>
