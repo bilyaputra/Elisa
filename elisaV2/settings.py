@@ -72,15 +72,11 @@ WSGI_APPLICATION = 'elisaV2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
-        'NAME': 'elisaV2',
-=======
         'NAME': 'elisav2',
->>>>>>> 96f546e (login dan input surat)
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'huruhara',
+        # 'PASSWORD': 'huruhara',
     }
 }
 
@@ -128,17 +124,11 @@ STATICFILES_DIRS = [
 # MEDIA UPLOAD FILES
 MEDIA_URL = '/media/'
 
-<<<<<<< HEAD
-MEDIA_ROOT = [
-    os.path.join(BASE_DIR, 'media'),
-]
-=======
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'input_surat'
 
 LOGIN_URL = 'login'
->>>>>>> 96f546e (login dan input surat)
 
 
 
