@@ -9,3 +9,7 @@ Tanggal 31 Januari 2022
     4. Tujuan	(Dropdown dari Role)
     5. Submit	
 							
+Jumat, 18 Februari 2022
+1. Tambahkan kolom status di tabel surat dan tabel disposisi
+2. Buat nilai default status adalah "0"
+3. Nilai berubah menjadi "1" ketika sudah terdisposisi
