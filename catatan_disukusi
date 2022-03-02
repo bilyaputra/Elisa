@@ -13,3 +13,10 @@ Jumat, 18 Februari 2022
 1. Tambahkan kolom status di tabel surat dan tabel disposisi
 2. Buat nilai default status adalah "0"
 3. Nilai berubah menjadi "1" ketika sudah terdisposisi
+
+Rabu, 2 Maret 2022
+1. Hilangkan kolom unit di dashboard
+2. Diposisi 1: Rektor
+   Disposisi 2: WR dan Kepala Biro
+   Disposisi 3: Dekan, Kabag dan Unit
+3. Askses admin sesuai tabel disposisi
