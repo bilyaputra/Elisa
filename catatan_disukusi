@@ -20,3 +20,8 @@ Rabu, 2 Maret 2022
    Disposisi 2: WR dan Kepala Biro
    Disposisi 3: Dekan, Kabag dan Unit
 3. Askses admin sesuai tabel disposisi
+4. Admin Rektor hanya bisa mengakses tabel disposisi1 dan dashboard
+5. Admin WR hanya bisa mengakses tabel disposisi2 dan dashboard
+6. Admin Dekan hanya bisa mengakses tabel disposisi3 dan dashboard
+7. Dashboard bisa dilihat tanpa login
+7. PR kita, tabel output surat untuk adum
