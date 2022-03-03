@@ -25,3 +25,18 @@ Rabu, 2 Maret 2022
 6. Admin Dekan hanya bisa mengakses tabel disposisi3 dan dashboard
 7. Dashboard bisa dilihat tanpa login
 7. PR kita, tabel output surat untuk adum
+
+Kamis, 3 Maret 2022
+1. Buatkan form luaran
+   Setelah submit dari tabel disposisi 3, masuk ke tabel luaran
+2. Atribut tabel luaran :
+	nomor surat, 
+	keterangan.disposisi1, 
+	catatan.disposisi1, 
+	keterangan.disposisi2,
+	catatan.disposisi 2,
+	keterangan.disposisi3,
+	catatan.disposisi 3, 
+	upload luaran 
+
+		
