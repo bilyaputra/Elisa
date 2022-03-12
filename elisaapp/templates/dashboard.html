@@ -7,7 +7,7 @@
 {% if user.is_authenticated %}
 <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow mb-3">
     <div class="container">
-    <a class="navbar-brand" href="{% url 'input_surat' %}">Elisa</a>
+    <a class="navbar-brand" href="{% url 'dashAdmin' %}">Elisa</a>
     <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,7 +58,7 @@
             <tr>
                 <th class="col-1" scope="col">No.</th>
                 <th class="col-6" scope="col" colspan="3">Identitas Surat</th>
-                <th class="col-5" scope="col" colspan="5">Disposisi</th>
+                <th class="col-5" scope="col" colspan="4">Disposisi</th>
             </tr>
         </thead>
         <tbody>
@@ -71,22 +71,65 @@
                 <th scope="row">D2</th>
                 <th scope="row">D3</th>
                 <th scope="row">D4</th>
-                <th scope="row">D5</th>
             </tr>
+            <!-- disposisi3 -->
+            {% for dis in diss3 %}
+
+            <tr>
+                <td></td>
+                <td>{{ dis.surat_id.nomor_surat }}</td>
+                <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.surat_id.perihal }}</td>
+                <td><i class="fas fa-check"></i></td>
+                <td><i class="fas fa-check"></i></i></td>
+                <td><i class="fas fa-check"></i></i></td>
+                <td><i class="fas fa-times"></i></td>
+            </tr>
+            {% endfor %}
+
+            <!-- disposisi2 -->
+            {% for dis in diss2 %}
+
+            <tr>
+                <td></td>
+                <td>{{ dis.surat_id.nomor_surat }}</td>
+                <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.surat_id.perihal }}</td>
+                <td><i class="fas fa-check"></i></td>
+                <td><i class="fas fa-check"></i></i></td>
+                <td><i class="fas fa-times"></i></i></td>
+                <td><i class="fas fa-times"></i></td>
+            </tr>
+            {% endfor %}
+
+            <!-- disposisi1 -->
+            {% for dis in diss1 %}
+
+            <tr>
+                <td></td>
+                <td>{{ dis.surat_id.nomor_surat }}</td>
+                <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.surat_id.perihal }}</td>
+                <td><i class="fas fa-check"></i></td>
+                <td><i class="fas fa-times"></i></i></td>
+                <td><i class="fas fa-times"></i></i></td>
+                <td><i class="fas fa-times"></i></td>
+            </tr>
+            {% endfor %}
+
+            <!-- belum terdisposisi -->
             {% for surat in surats %}
 
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td></td>
                 <td>{{ surat.nomor_surat }}</td>
                 <td>{{ surat.tanggal_masuk }}</td>
                 <td>{{ surat.perihal }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><i class="fas fa-times"></i></td>
+                <td><i class="fas fa-times"></i></i></td>
+                <td><i class="fas fa-times"></i></i></td>
+                <td><i class="fas fa-times"></i></td>
             </tr>
-
             {% endfor %}
         </tbody>
     </table>

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- partial:index.partial.html -->
+  <div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <header>
+        <a href="#">Elisa</a>
+      </header>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashAdmin' %}">
+            <i class="fas fa-th-large"></i> Dashboard
+          </a>
+        </li>
+        {% if grup.name != "adum" %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'disposisi' %}">
+            <i class="fas fa-paper-plane"></i> Disposisi
+            </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'input_surat' %}">
+              <i class="fas fa-envelope"></i> Input Surat
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'arsip' %}">
+              <i class="fas fa-inbox"></i> Arsip
+            </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <i class="fas fa-sign-out-alt"></i> Log Out
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+        <ul class="navbar-nav ms-auto">
+          <li id="dropdown" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="rounded-circle"
+                    src="{% static 'images/undraw_profile.svg' %}"
+                    height="30"
+                    alt=""
+                    loading="lazy">
+              {{ user }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+    </nav>
+
+    <!-- Content -->
+
+    <div id="input-surat">
+      <div class="card">
+        <h2 class="card-header">Dashboard</h2>
+        <div class="card-body">
+          
+            <div class="col-3 mb-2">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                  </form>
+            </div>
+        
+            <!-- tabel -->
+            <table class="table table-bordered table-striped text-center">
+                <thead>
+                    <tr>
+                        <th class="col-1" scope="col">No.</th>
+                        <th class="col-6" scope="col" colspan="3">Identitas Surat</th>
+                        <th class="col-5" scope="col" colspan="4">Disposisi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <th scope="row">Nomor Surat</th>
+                        <th scope="row">Tanggal Masuk</td>
+                        <th scope="row">Perihal</th>
+                        <th scope="row">D1</th>
+                        <th scope="row">D2</th>
+                        <th scope="row">D3</th>
+                        <th scope="row">D4</th>
+                    </tr>
+                    <!-- disposisi3 -->
+                    {% for dis in diss3 %}
+
+                    <tr>
+                        <td></td>
+                        <td>{{ dis.surat_id.nomor_surat }}</td>
+                        <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                        <td>{{ dis.surat_id.perihal }}</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></i></td>
+                        <td><i class="fas fa-check"></i></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- disposisi2 -->
+                    {% for dis in diss2 %}
+
+                    <tr>
+                        <td></td>
+                        <td>{{ dis.surat_id.nomor_surat }}</td>
+                        <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                        <td>{{ dis.surat_id.perihal }}</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></i></td>
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- disposisi1 -->
+                    {% for dis in diss1 %}
+
+                    <tr>
+                        <td></td>
+                        <td>{{ dis.surat_id.nomor_surat }}</td>
+                        <td>{{ dis.surat_id.tanggal_masuk }}</td>
+                        <td>{{ dis.surat_id.perihal }}</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- belum terdisposisi -->
+                    {% for surat in surats %}
+
+                    <tr>
+                        <td></td>
+                        <td>{{ surat.nomor_surat }}</td>
+                        <td>{{ surat.tanggal_masuk }}</td>
+                        <td>{{ surat.perihal }}</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  {% for surat in surats %}
+    <p>{{ surat.surat_id.nomor_surat }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

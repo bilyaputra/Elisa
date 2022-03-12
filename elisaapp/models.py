@@ -35,6 +35,7 @@ class Surat(models.Model):
     email_pic = models.EmailField(null=True)
     instansi_asal = models.CharField(max_length=50, null=True)
     file_surat = models.FileField(upload_to='surat/', null=True)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.perihal
@@ -58,10 +59,11 @@ class Jabatan(models.Model):
 #DISPOSISI1
 class Disposisi1(models.Model):
     surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
-    tanggal_disposisi = models.DateField()
+    tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
     catatan = models.CharField(max_length=100)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.keterangan_id
@@ -69,10 +71,11 @@ class Disposisi1(models.Model):
 #DISPOSISI2
 class Disposisi2(models.Model):
     surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
-    tanggal_disposisi = models.DateField()
+    tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
     catatan = models.CharField(max_length=100)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.keterangan_id
@@ -80,10 +83,11 @@ class Disposisi2(models.Model):
 #DISPOSISI3
 class Disposisi3(models.Model):
     surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
-    tanggal_disposisi = models.DateField()
+    tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
     catatan = models.CharField(max_length=100)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.keterangan_id

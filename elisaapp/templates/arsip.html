@@ -12,7 +12,7 @@
       </header>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'dashboard' %}">
+          <a class="nav-link" href="{% url 'dashAdmin' %}">
             <i class="fas fa-th-large"></i> Dashboard
           </a>
         </li>
@@ -91,7 +91,7 @@
                         <td>{{ surat.instansi_asal }}</td>
                         <td>{{ surat.tanggal_masuk }}</td>
                         <td>{{ surat.estimasi_deadline }}</td>
-                        <td></td>
+                        <td><a href="../../media/{{ surat.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
                         <td></td>
                     </tr>
 
