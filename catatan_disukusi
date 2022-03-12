@@ -9,3 +9,34 @@ Tanggal 31 Januari 2022
     4. Tujuan	(Dropdown dari Role)
     5. Submit	
 							
+Jumat, 18 Februari 2022
+1. Tambahkan kolom status di tabel surat dan tabel disposisi
+2. Buat nilai default status adalah "0"
+3. Nilai berubah menjadi "1" ketika sudah terdisposisi
+
+Rabu, 2 Maret 2022
+1. Hilangkan kolom unit di dashboard
+2. Diposisi 1: Rektor
+   Disposisi 2: WR dan Kepala Biro
+   Disposisi 3: Dekan, Kabag dan Unit
+3. Askses admin sesuai tabel disposisi
+4. Admin Rektor hanya bisa mengakses tabel disposisi1 dan dashboard
+5. Admin WR hanya bisa mengakses tabel disposisi2 dan dashboard
+6. Admin Dekan hanya bisa mengakses tabel disposisi3 dan dashboard
+7. Dashboard bisa dilihat tanpa login
+7. PR kita, tabel output surat untuk adum
+
+Kamis, 3 Maret 2022
+1. Buatkan form luaran
+   Setelah submit dari tabel disposisi 3, masuk ke tabel luaran
+2. Atribut tabel luaran :
+	nomor surat, 
+	keterangan.disposisi1, 
+	catatan.disposisi1, 
+	keterangan.disposisi2,
+	catatan.disposisi 2,
+	keterangan.disposisi3,
+	catatan.disposisi 3, 
+	upload luaran 
+
+		
