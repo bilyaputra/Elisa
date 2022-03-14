@@ -30,7 +30,8 @@ Kamis, 3 Maret 2022
 1. Buatkan form luaran
    Setelah submit dari tabel disposisi 3, masuk ke tabel luaran
 2. Atribut tabel luaran :
-	nomor surat, 
+	nomor surat, "nomor surat keluar"
+	nomor surat, "dari tabel input surat"
 	keterangan.disposisi1, 
 	catatan.disposisi1, 
 	keterangan.disposisi2,
