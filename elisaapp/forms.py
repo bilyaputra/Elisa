@@ -8,14 +8,13 @@ from elisaapp.models import Surat, Disposisi1, Disposisi2, Disposisi3
 class formSurat(ModelForm):
     class Meta:
         model = Surat
-        exclude = ['status']
+        exclude = ['status', 'id_pic']
 
         widgets = {
             'tanggal_surat' : forms.DateTimeInput({'class':'form-control datepicker'}),
             'estimasi_deadline' : forms.TextInput({'class':'form-control datepicker'}),
             'nomor_surat' : forms.TextInput({'class':'form-control'}),
             'perihal' : forms.TextInput({'class':'form-control'}),
-            'id_pic' : forms.TextInput({'class':'form-control'}),
             'nama_pic' : forms.TextInput({'class':'form-control'}),
             'kontak_pic' : forms.TextInput({'class':'form-control'}),
             'email_pic' : forms.TextInput({'class':'form-control'}),
