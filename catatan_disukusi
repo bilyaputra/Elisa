@@ -40,4 +40,13 @@ Kamis, 3 Maret 2022
 	catatan.disposisi 3, 
 	upload luaran 
 
-		
+Fiks nama Grup dan user
+Grup --> adum, rektor, wrkaro, dekankabag
+
+user			group			password
+adminadum1		adum			adumadum
+adminrektor1		wrkaro			wrkarowrkaro
+adminkaro1		wrkaro			wrkarowrkaro
+adminwr1		wrkaro			wrkarowrkaro
+adminkabag1		dekankabag		dekankabagdekankabag
+admindekanfs		dekankabag		dekankabagdekankabag
