@@ -67,12 +67,22 @@
                                 <th scope="col">No.</th>
                                 <th scope="col">Nomor Surat</th>
                                 <th scope="col">Perihal</th>
+                                {% if grup.name == "wr" %}
+                                <th scope="col">Catatan1</th>
+                                <th scope="col">Disposisi1</th>
+                                {% elif grup.name == "dekan" %}
+                                <th scope="col">Catatan1</th>
+                                <th scope="col">Disposisi1</th>
+                                <th scope="col">Catatan2</th>
+                                <th scope="col">Disposisi2</th>
+                                {% endif %}
+                                <th scope="col">Catatan</th>
                                 <th scope="col">Disposisi</th>
                                 <th scope="col">Tujuan</th>
                                 <th scope="col">Action</th>
+                                <th scope="col">Lihat Surat</th>
                             </tr>
                         </thead>
-                        {% if grup.name == "rektor" %}
                         <tbody>
                             {% for surat in surats %}
 
@@ -82,6 +92,8 @@
 
                               <tr>
                                   <td>{{ forloop.counter }}</td>
+                                  <!-- halaman disposisi untuk admin rektor -->
+                                  {% if grup.name == "rektor" %}
                                   <td>
                                     {{ surat.nomor_surat }}
                                     <label for="{{ form.surat_id.id_for_label }}" hidden>Nomor Surat</label>
@@ -89,11 +101,52 @@
                                   </td>
                                   <td>
                                     {{ surat.perihal }}
-                                    <label for="{{ form.catatan.id_for_label }}" hidden>Perihal</label>
-                                    <input type="hidden" name="catatan" value="{{ surat.perihal }}" id="{{ form.catatan.id_for_label }}">
+                                  </td>
+                                  <!-- halaman disposisi untuk admin wr -->
+                                  {% elif grup.name == "wr" %}
+                                  <td>
+                                    {{ surat.surat_id.nomor_surat }}
+                                    <label for="{{ form.surat_id.id_for_label }}" hidden>Nomor Surat</label>
+                                    <input type="hidden" name="surat_id" value="{{ surat.id }}" id="{{ form.surat_id.id_for_label }}">
                                   </td>
                                   <td>
-                                    <label for="{{ form.keterangan_id.id_for_label }}" hidden>Perihal</label>
+                                    {{ surat.surat_id.perihal }}
+                                  </td>
+                                  <td>
+                                    {{ surat.catatan }}
+                                  </td>
+                                  <td>
+                                    {{ surat.keterangan_id }}
+                                  </td>
+                                  <!-- halaman disposisi untuk admin dekan -->
+                                  {% else %}
+                                  <td>
+                                    {{ surat.surat_id.surat_id.nomor_surat }}
+                                    <label for="{{ form.surat_id.id_for_label }}" hidden>Nomor Surat</label>
+                                    <input type="hidden" name="surat_id" value="{{ surat.id }}" id="{{ form.surat_id.id_for_label }}">
+                                  </td>
+                                  <td>
+                                    {{ surat.surat_id.surat_id.perihal }}
+                                  </td>
+                                  <td>
+                                    {{ surat.surat_id.catatan }}
+                                  </td>
+                                  <td>
+                                    {{ surat.surat_id.keterangan_id }}
+                                  </td>
+                                  <td>
+                                    {{ surat.catatan }}
+                                  </td>
+                                  <td>
+                                    {{ surat.keterangan_id }}
+                                  </td>
+                                  {% endif %}
+                                  <td>
+                                    <label for="{{ form.catatan.id_for_label }}" hidden>Catatan</label>
+                                    {{ form.catatan }}
+                                  </td>
+                                  <td>
+                                    <label for="{{ form.keterangan_id.id_for_label }}" hidden>Keterangan</label>
                                     {{ form.keterangan_id }}
                                   </td>
                                   <td>
@@ -101,46 +154,18 @@
                                     {{ form.tujuan}}
                                   </td>
                                   <td><button class="btn btn-secondary">Submit</button></td> 
-                              </tr>
                             </form>
-        
+                              {% if grup.name == "rektor" %}
+                              <td><a href="../../media/{{ surat.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
+                              {% elif grup.name == "wr" %}
+                              <td><a href="../../media/{{ surat.surat_id.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
+                              {% else %}
+                              <td><a href="../../media/{{ surat.surat_id.surat_id.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
+                              {% endif %}
+                            </tr>
+
                             {% endfor %}
                         </tbody>
-                        {% else %}
-                        <tbody>
-                          {% for surat in surats %}
-
-                          
-                          <form action="/disposisi/" method="post">
-                            {% csrf_token %}
-
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>
-                                  {{ surat.surat_id.nomor_surat }}
-                                  <label for="{{ form.surat_id.id_for_label }}" hidden>Nomor Surat</label>
-                                  <input type="hidden" name="surat_id" value="{{ surat.surat_id_id }}" id="{{ form.surat_id.id_for_label }}">
-                                </td>
-                                <td>
-                                  {{ surat.surat_id.perihal }}
-                                  <label for="{{ form.catatan.id_for_label }}" hidden>Perihal</label>
-                                  <input type="hidden" name="catatan" value="{{ surat.surat_id.perihal }}" id="{{ form.catatan.id_for_label }}">
-                                </td>
-                                <td>
-                                  <label for="{{ form.keterangan_id.id_for_label }}" hidden>Perihal</label>
-                                  {{ form.keterangan_id }}
-                                </td>
-                                <td>
-                                  <label for="{{ form.tujuan.id_for_label }}" hidden>Tujuan</label>
-                                  {{ form.tujuan}}
-                                </td> 
-                                <td><button class="btn btn-secondary">Submit</button></td> 
-                            </tr>
-                          </form>
-      
-                          {% endfor %}
-                        </tbody>
-                        {% endif %}
                 </table>
         </div>
       </div>

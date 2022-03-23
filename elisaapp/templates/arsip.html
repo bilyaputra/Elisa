@@ -22,6 +22,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'output' %}">
+            <i class="fas fa-file-import"></i> Output
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'arsip' %}">
             <i class="fas fa-inbox"></i> Arsip
           </a>
@@ -86,13 +91,17 @@
 
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ surat.nomor_surat }}</td>
-                        <td>{{ surat.perihal }}</td>
-                        <td>{{ surat.instansi_asal }}</td>
-                        <td>{{ surat.tanggal_masuk }}</td>
-                        <td>{{ surat.estimasi_deadline }}</td>
-                        <td><a href="../../media/{{ surat.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
-                        <td></td>
+                        <td>{{ surat.nomor_masuk.surat_id.surat_id.surat_id.nomor_surat }}</td>
+                        <td>{{ surat.nomor_masuk.surat_id.surat_id.surat_id.perihal }}</td>
+                        <td>{{ surat.nomor_masuk.surat_id.surat_id.surat_id.instansi_asal }}</td>
+                        <td>{{ surat.nomor_masuk.surat_id.surat_id.surat_id.tanggal_masuk }}</td>
+                        <td>{{ surat.nomor_masuk.surat_id.surat_id.surat_id.estimasi_deadline }}</td>
+                        <td><a href="../../media/{{ surat.nomor_masuk.surat_id.surat_id.surat_id.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
+                        {% if surat.upload_luaran == "" %}
+                        <td>None</td>
+                        {% else %}
+                        <td><a href="../../media/{{ surat.upload_luaran }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
+                        {% endif %}
                     </tr>
 
                     {% endfor %}

@@ -14,9 +14,11 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
     path('dashboard-admin/', dashAdmin, name='dashAdmin'),
     path('arsip/', arsip, name='arsip'),
-    path('tes/', tes, name='tes'),
     path('disposisi/', disposisi, name='disposisi'),
+    path('output/', output, name='output'),
     path('coba/', coba, name='coba'),
+    path('tes/', tes, name='tes'),
+
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

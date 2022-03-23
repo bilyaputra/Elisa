@@ -8,7 +8,7 @@ from elisaapp.models import Jabatan
 
 
 class SuratAdmin(admin.ModelAdmin):
-    list_display = ['id_pic', 'nama_pic', 'instansi_asal', 'tanggal_surat', 'nomor_surat', 'perihal', 'tanggal_masuk', 'estimasi_deadline']
+    list_display = ['nama_pic', 'instansi_asal', 'tanggal_surat', 'nomor_surat', 'perihal', 'tanggal_masuk', 'estimasi_deadline']
     search_fields = ['nomor_surat']
     # list_filter = ['perihal']
     list_per_page = 10

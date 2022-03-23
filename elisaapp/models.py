@@ -29,7 +29,6 @@ class Surat(models.Model):
     estimasi_deadline = models.DateField()
     nomor_surat = models.CharField(max_length=50, null=True)
     perihal = models.CharField(max_length=50)
-    id_pic = models.CharField(max_length=16, null=True)
     nama_pic = models.CharField(max_length=50, null=True)
     kontak_pic = PhoneNumberField(null=True)
     email_pic = models.EmailField(null=True)
@@ -61,7 +60,7 @@ class Disposisi1(models.Model):
     surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
     tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
-    catatan = models.CharField(max_length=100)
+    catatan = models.CharField(max_length=100, null=True, blank=True)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
 
@@ -70,10 +69,10 @@ class Disposisi1(models.Model):
 
 #DISPOSISI2
 class Disposisi2(models.Model):
-    surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
+    surat_id = models.ForeignKey(Disposisi1, on_delete=models.CASCADE)
     tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
-    catatan = models.CharField(max_length=100)
+    catatan = models.CharField(max_length=100, null=True, blank=True)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
 
@@ -82,23 +81,27 @@ class Disposisi2(models.Model):
 
 #DISPOSISI3
 class Disposisi3(models.Model):
-    surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
+    surat_id = models.ForeignKey(Disposisi2, on_delete=models.CASCADE)
     tanggal_disposisi = models.DateTimeField(auto_now_add=True, null=True)
     keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
-    catatan = models.CharField(max_length=100)
+    catatan = models.CharField(max_length=100, null=True, blank=True)
     tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.keterangan_id
 
-#DISPOSISI4
-class Disposisi4(models.Model):
-    surat_id = models.ForeignKey(Surat, on_delete=models.CASCADE)
-    tanggal_disposisi = models.DateField()
-    keterangan_id = models.ForeignKey(Keterangan, on_delete=models.CASCADE)
-    catatan = models.CharField(max_length=100)
-    tujuan = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
+#Luaran
+class Luaran(models.Model):
+    nomor_masuk = models.ForeignKey(Disposisi3, on_delete=models.CASCADE)
+    nomor_keluar = models.CharField(max_length=50)
+    catatan_disposisi1 = models.CharField(max_length=50, null=True)
+    keterangan_disposisi1 = models.CharField(max_length=50)
+    catatan_disposisi2 = models.CharField(max_length=50, null=True)
+    keterangan_disposisi2 = models.CharField(max_length=50)
+    catatan_disposisi3 = models.CharField(max_length=50, null=True)
+    keterangan_disposisi3 = models.CharField(max_length=50)
+    upload_luaran = models.FileField(upload_to='luaran/', null=True, blank=True)
 
     def __str__(self):
-        return self.keterangan_id
+        return self.nomor_keluar

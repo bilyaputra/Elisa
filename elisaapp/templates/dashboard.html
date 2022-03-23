@@ -70,13 +70,27 @@
                 <th scope="row">D3</th>
                 <th scope="row">D4</th>
             </tr>
+            <!-- disposisi4 -->
+            {% for dis in diss4 %}
+
+            <tr>
+                <td>{{ dis.nomor_masuk.surat_id.surat_id.surat_id.nomor_surat }}</td>
+                <td>{{ dis.nomor_masuk.surat_id.surat_id.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.nomor_masuk.surat_id.surat_id.surat_id.perihal }}</td>
+                <td><i class="fas fa-check"></i></td>
+                <td><i class="fas fa-check"></i></i></td>
+                <td><i class="fas fa-check"></i></i></td>
+                <td><i class="fas fa-check"></i></td>
+            </tr>
+            {% endfor %}
+
             <!-- disposisi3 -->
             {% for dis in diss3 %}
 
             <tr>
-                <td>{{ dis.surat_id.nomor_surat }}</td>
-                <td>{{ dis.surat_id.tanggal_masuk }}</td>
-                <td>{{ dis.surat_id.perihal }}</td>
+                <td>{{ dis.surat_id.surat_id.surat_id.nomor_surat }}</td>
+                <td>{{ dis.surat_id.surat_id.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.surat_id.surat_id.surat_id.perihal }}</td>
                 <td><i class="fas fa-check"></i></td>
                 <td><i class="fas fa-check"></i></i></td>
                 <td><i class="fas fa-check"></i></i></td>
@@ -88,9 +102,9 @@
             {% for dis in diss2 %}
 
             <tr>
-                <td>{{ dis.surat_id.nomor_surat }}</td>
-                <td>{{ dis.surat_id.tanggal_masuk }}</td>
-                <td>{{ dis.surat_id.perihal }}</td>
+                <td>{{ dis.surat_id.surat_id.nomor_surat }}</td>
+                <td>{{ dis.surat_id.surat_id.tanggal_masuk }}</td>
+                <td>{{ dis.surat_id.surat_id.perihal }}</td>
                 <td><i class="fas fa-check"></i></td>
                 <td><i class="fas fa-check"></i></i></td>
                 <td><i class="fas fa-times"></i></i></td>

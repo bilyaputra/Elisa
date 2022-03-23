@@ -22,6 +22,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'output' %}">
+            <i class="fas fa-file-import"></i> Output
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'arsip' %}">
             <i class="fas fa-inbox"></i> Arsip
           </a>
@@ -62,8 +67,10 @@
         <h2 class="card-header">Input Surat</h2>
         <div class="card-body">
           <div class="col-md-5">
-            {% if pesan %}
-                  <div class="alert alert-success">{{pesan}}</div>
+            {% if pesan == 1 %}
+                  <div class="alert alert-success">Data Berhasil Disimpan</div>
+            {% elif pesan == 0 %}
+                  <div class="alert alert-danger">Data Gagal Disimpan</div>
             {% endif %}
             <form action="/input-surat/" method="post" enctype="multipart/form-data">
               {% csrf_token %}

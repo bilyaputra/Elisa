@@ -3,12 +3,12 @@ from django import forms
 from django.forms import ModelForm
 from django import forms
 import phonenumbers
-from elisaapp.models import Surat, Disposisi1, Disposisi2, Disposisi3
+from elisaapp.models import Luaran, Surat, Disposisi1, Disposisi2, Disposisi3
 
 class formSurat(ModelForm):
     class Meta:
         model = Surat
-        exclude = ['status', 'id_pic']
+        exclude = ['status']
 
         widgets = {
             'tanggal_surat' : forms.DateTimeInput({'class':'form-control datepicker'}),
@@ -55,4 +55,20 @@ class formDisposisi3(ModelForm):
             'keterangan_id' : forms.Select({'class':'form-control'}),
             'catatan' : forms.TextInput({'class':'form-control'}),
             'tujuan' : forms.Select({'class':'form-control'}),
+        }
+
+class formLuaran(ModelForm):
+    class Meta:
+        model = Luaran
+        fields = '__all__'
+
+        widgets = {
+            'nomor_masuk' : forms.TextInput({'class':'form-control'}),
+            'nomor_keluar' : forms.TextInput({'class':'form-control'}),
+            'catatan_disposisi1' : forms.TextInput({'class':'form-control'}),
+            'keterangan_disposisi1' : forms.TextInput({'class':'form-control'}),
+            'catatan_disposisi2' : forms.TextInput({'class':'form-control'}),
+            'keterangan_disposisi2' : forms.TextInput({'class':'form-control'}),
+            'catatan_disposisi3' : forms.TextInput({'class':'form-control'}),
+            'keterangan_disposisi3' : forms.TextInput({'class':'form-control'}),
         }
