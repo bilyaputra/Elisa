@@ -30,7 +30,8 @@ Kamis, 3 Maret 2022
 1. Buatkan form luaran
    Setelah submit dari tabel disposisi 3, masuk ke tabel luaran
 2. Atribut tabel luaran :
-	nomor surat, 
+	nomor surat, "nomor surat keluar"
+	nomor surat, "dari tabel input surat"
 	keterangan.disposisi1, 
 	catatan.disposisi1, 
 	keterangan.disposisi2,
@@ -39,4 +40,13 @@ Kamis, 3 Maret 2022
 	catatan.disposisi 3, 
 	upload luaran 
 
-		
+Fiks nama Grup dan user
+Grup --> adum, rektor, wrkaro, dekankabag
+
+user			group			password
+adminadum1		adum			adumadum
+adminrektor1		wrkaro			wrkarowrkaro
+adminkaro1		wrkaro			wrkarowrkaro
+adminwr1		wrkaro			wrkarowrkaro
+adminkabag1		dekankabag		dekankabagdekankabag
+admindekanfs		dekankabag		dekankabagdekankabag
