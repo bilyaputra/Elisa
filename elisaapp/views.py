@@ -235,9 +235,9 @@ def disposisi(request):
 
     if grup.name == 'rektor':
         return rektor(request)
-    elif grup.name == 'wr':
+    elif grup.name == 'wrkaro':
         return wr(request)
-    elif grup.name == 'dekan':
+    elif grup.name == 'dekankabag':
         return dekan(request)
     else:
         return redirect('/dashboard-admin/')

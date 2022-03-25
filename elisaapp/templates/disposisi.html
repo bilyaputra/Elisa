@@ -67,10 +67,10 @@
                                 <th scope="col">No.</th>
                                 <th scope="col">Nomor Surat</th>
                                 <th scope="col">Perihal</th>
-                                {% if grup.name == "wr" %}
+                                {% if grup.name == "wrkaro" %}
                                 <th scope="col">Catatan1</th>
                                 <th scope="col">Disposisi1</th>
-                                {% elif grup.name == "dekan" %}
+                                {% elif grup.name == "dekankabag" %}
                                 <th scope="col">Catatan1</th>
                                 <th scope="col">Disposisi1</th>
                                 <th scope="col">Catatan2</th>
@@ -102,8 +102,8 @@
                                   <td>
                                     {{ surat.perihal }}
                                   </td>
-                                  <!-- halaman disposisi untuk admin wr -->
-                                  {% elif grup.name == "wr" %}
+                                  <!-- halaman disposisi untuk admin wrkaro -->
+                                  {% elif grup.name == "wrkaro" %}
                                   <td>
                                     {{ surat.surat_id.nomor_surat }}
                                     <label for="{{ form.surat_id.id_for_label }}" hidden>Nomor Surat</label>
@@ -118,7 +118,7 @@
                                   <td>
                                     {{ surat.keterangan_id }}
                                   </td>
-                                  <!-- halaman disposisi untuk admin dekan -->
+                                  <!-- halaman disposisi untuk admin dekankabag -->
                                   {% else %}
                                   <td>
                                     {{ surat.surat_id.surat_id.nomor_surat }}
@@ -157,7 +157,7 @@
                             </form>
                               {% if grup.name == "rektor" %}
                               <td><a href="../../media/{{ surat.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
-                              {% elif grup.name == "wr" %}
+                              {% elif grup.name == "wrkaro" %}
                               <td><a href="../../media/{{ surat.surat_id.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
                               {% else %}
                               <td><a href="../../media/{{ surat.surat_id.surat_id.file_surat }}" target="blank"><button class="btn btn-secondary">Lihat</button></a></td>
