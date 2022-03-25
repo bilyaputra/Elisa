@@ -1,6 +1,6 @@
 from tkinter.messagebox import RETRY
 from django.shortcuts import redirect, render
-from elisaapp.models import Surat, Disposisi1, Disposisi2, Disposisi3, Luaran
+from elisaapp.models import Keterangan, Surat, Disposisi1, Disposisi2, Disposisi3, Luaran
 from elisaapp.forms import *
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -95,39 +95,61 @@ def arsip(request):
     return render(request, 'arsip.html', konteks)
 
 # disposisi function
-# @login_required(login_url=settings.LOGIN_URL)
-# def rektor(request):
-#     grup = request.user.groups.all().first()
-#     if request.POST:
-#         form = formDisposisi1(request.POST)
-#         if form.is_valid():
-#             surat = Surat.objects.get(id=request.POST.get("surat_id"))
-#             surat.status = 1
-#             surat.save()
-#             form.save() 
-#             form = formDisposisi1()
-#             pesan = "Surat berhasil didisposisi"
-#             surats = Surat.objects.filter(status=0)
+@login_required(login_url=settings.LOGIN_URL)
+def rektor(request):
+    grup = request.user.groups.all().first()
+    if request.POST:
+        form = formDisposisi1(request.POST)
+        if form.is_valid():                
+            surat = Surat.objects.get(id=request.POST.get("surat_id"))
+            surat.status = 1
+            surat.save()
+            form.save() 
+            if request.POST.get("keterangan_id") == '8':
+                # simpan ke disposisi2
+                surat = Disposisi1.objects.get(surat_id_id=request.POST.get("surat_id"))
+                idDis1 = surat.id
+                surat.status = 1
+                surat.save()
+                Disposisi2.objects.create(
+                    surat_id_id = surat.id,
+                    keterangan_id_id = surat.keterangan_id_id,
+                    tujuan_id = surat.tujuan_id,
+                )
 
-#             konteks = {
-#                 'form' : form,
-#                 'pesan' : pesan,
-#                 'surats' : surats,
-#                 'grup' : grup,
-#             }
+                # simpan ke disposisi 3
+                surat = Disposisi2.objects.get(surat_id_id=idDis1)
+                surat.status = 1
+                surat.save()
+                Disposisi3.objects.create(
+                    surat_id_id = surat.id,
+                    keterangan_id_id = surat.keterangan_id_id,
+                    tujuan_id = surat.tujuan_id,
+                )
+            
+            form = formDisposisi1()
+            pesan = "Surat berhasil didisposisi"
+            surats = Surat.objects.filter(status=0)
 
-#             return render(request, 'disposisi.html', konteks)
-#     else:
-#         surats = Surat.objects.filter(status=0)
-#         form = formDisposisi1()
+            konteks = {
+                'form' : form,
+                'pesan' : pesan,
+                'surats' : surats,
+                'grup' : grup,
+            }
 
-#         konteks = {
-#             'form' : form,
-#             'surats' : surats,
-#             'grup' : grup,
-#         }
+            return render(request, 'disposisi.html', konteks)
+    else:
+        surats = Surat.objects.filter(status=0)
+        form = formDisposisi1()
 
-#         return render(request, 'disposisi.html', konteks)
+        konteks = {
+            'form' : form,
+            'surats' : surats,
+            'grup' : grup,
+        }
+
+        return render(request, 'disposisi.html', konteks)
 
 @login_required(login_url=settings.LOGIN_URL)
 def wr(request):
@@ -139,6 +161,17 @@ def wr(request):
             surat.status = 1
             surat.save()
             form.save() 
+            if request.POST.get("keterangan_id") == '8':
+                # simpan ke disposisi 3
+                surat = Disposisi2.objects.get(surat_id_id=request.POST.get("surat_id"))
+                surat.status = 1
+                surat.save()
+                Disposisi3.objects.create(
+                    surat_id_id = surat.id,
+                    keterangan_id_id = surat.keterangan_id_id,
+                    tujuan_id = surat.tujuan_id,
+                )
+
             form = formDisposisi2()
             pesan = "Surat berhasil didisposisi"
             surats = Disposisi1.objects.filter(status=0)
@@ -248,57 +281,61 @@ def output(request):
 
 
 # fungsi nyoba nyoba
-@login_required(login_url=settings.LOGIN_URL)
-def rektor(request):
-    grup = request.user.groups.all().first()
-    if request.POST:
-        form = formDisposisi1(request.POST)
-        if form.is_valid():                
-            surat = Surat.objects.get(id=request.POST.get("surat_id"))
-            surat.status = 1
-            surat.save()
-            form.save() 
-            keterangan = request.POST.get("keterangan_id")
-            if keterangan == 8:
-                print(keterangan)
-                # simpan ke disposisi2
-                form = formDisposisi2(Disposisi1.objects.get(surat_id=request.POST.get("surat_id")))
-                surat = Disposisi1.objects.get(surat_id=request.POST.get("Surat_id"))
-                idDis1 = surat.id
-                surat.status = 1
-                surat.save()
-                form.save()
+# @login_required(login_url=settings.LOGIN_URL)
+# def rektor(request):
+#     grup = request.user.groups.all().first()
+#     if request.POST:
+#         form = formDisposisi1(request.POST)
+#         if form.is_valid():                
+#             surat = Surat.objects.get(id=request.POST.get("surat_id"))
+#             surat.status = 1
+#             surat.save()
+#             form.save() 
+#             if request.POST.get("keterangan_id") == '8':
+#                 # simpan ke disposisi2
+#                 surat = Disposisi1.objects.get(surat_id_id=request.POST.get("surat_id"))
+#                 idDis1 = surat.id
+#                 surat.status = 1
+#                 surat.save()
+#                 Disposisi2.objects.create(
+#                     surat_id_id = surat.id,
+#                     keterangan_id_id = surat.keterangan_id_id,
+#                     tujuan_id = surat.tujuan_id,
+#                 )
 
-                # simpan ke disposisi 3
-                form = formDisposisi3(Disposisi2.objects.get(surat_id=idDis1))
-                surat = Disposisi2.objects.get(surat_id=idDis1)
-                surat.status = 1
-                surat.save()
-                form.save()
+#                 # simpan ke disposisi 3
+#                 surat = Disposisi2.objects.get(surat_id_id=idDis1)
+#                 surat.status = 1
+#                 surat.save()
+#                 Disposisi3.objects.create(
+#                     surat_id_id = surat.id,
+#                     keterangan_id_id = surat.keterangan_id_id,
+#                     tujuan_id = surat.tujuan_id,
+#                 )
             
-            form = formDisposisi1()
-            pesan = "Surat berhasil didisposisi"
-            surats = Surat.objects.filter(status=0)
+#             form = formDisposisi1()
+#             pesan = "Surat berhasil didisposisi"
+#             surats = Surat.objects.filter(status=0)
 
-            konteks = {
-                'form' : form,
-                'pesan' : pesan,
-                'surats' : surats,
-                'grup' : grup,
-            }
+#             konteks = {
+#                 'form' : form,
+#                 'pesan' : pesan,
+#                 'surats' : surats,
+#                 'grup' : grup,
+#             }
 
-            return render(request, 'disposisi.html', konteks)
-    else:
-        surats = Surat.objects.filter(status=0)
-        form = formDisposisi1()
+#             return render(request, 'disposisi.html', konteks)
+#     else:
+#         surats = Surat.objects.filter(status=0)
+#         form = formDisposisi1()
 
-        konteks = {
-            'form' : form,
-            'surats' : surats,
-            'grup' : grup,
-        }
+#         konteks = {
+#             'form' : form,
+#             'surats' : surats,
+#             'grup' : grup,
+#         }
 
-        return render(request, 'disposisi.html', konteks)
+#         return render(request, 'disposisi.html', konteks)
 
 def coba(request):
     surats = Disposisi3.objects.filter(status=0)
