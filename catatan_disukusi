@@ -44,8 +44,8 @@ Fiks nama Grup dan user
 Grup --> adum, rektor, wrkaro, dekankabag
 
 user			group			password
-adminadum1		adum			adumadum
-adminrektor1		wrkaro			wrkarowrkaro
+adminadum1		adum			administrasi
+adminrektor1		rektor			rektorrektor
 adminkaro1		wrkaro			wrkarowrkaro
 adminwr1		wrkaro			wrkarowrkaro
 adminkabag1		dekankabag		dekankabagdekankabag
