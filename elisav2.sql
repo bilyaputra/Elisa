@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2022 at 05:04 AM
+-- Generation Time: Mar 31, 2022 at 02:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,9 +38,9 @@ CREATE TABLE `auth_group` (
 
 INSERT INTO `auth_group` (`id`, `name`) VALUES
 (5, 'adum'),
-(3, 'dekan'),
+(3, 'dekankabag'),
 (1, 'rektor'),
-(2, 'wr');
+(2, 'wrkaro');
 
 -- --------------------------------------------------------
 
@@ -162,11 +162,13 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$320000$CrzHTUoPuEahVEYPEgEOK3$jwMahLAkM3y7maw8Sz2G6dt+v5WrmP/pnqagZPd2ksA=', '2022-03-18 03:20:35.176452', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2022-02-03 07:04:07.313560'),
-(6, 'pbkdf2_sha256$320000$SrDkn5uFIQFpFfVlzHeaEM$rkAX1VVvzZP4pgu5h0GJpIMAm4dG2vr1mEM8WUAmFJw=', '2022-03-18 03:59:03.158872', 0, 'dekan', 'dekan', '', '', 1, 1, '2022-03-03 14:14:21.000000'),
-(7, 'pbkdf2_sha256$320000$GeBYCOoht3LpeFlkOoozmP$ruqR+V/54R2kyzwiut3fKvkTgqRAl9E5sPkJQUEVSc8=', '2022-03-18 03:59:33.499486', 0, 'adum', 'adum', '', '', 1, 1, '2022-03-03 14:14:43.000000'),
-(8, 'pbkdf2_sha256$320000$JjhAFQAxEhiLWVhBX3y8Ri$5b1xXUVJT0Wafph/KG6Yyr6xpQutUd2BxTDmbYmlQ80=', '2022-03-18 03:22:06.435175', 0, 'rektor', 'rektor', '', '', 1, 1, '2022-03-03 14:15:28.000000'),
-(9, 'pbkdf2_sha256$320000$B9OiHGDonDN6IAI5MwIR54$gjKBxwAGxUC3sVeiFjCkeOgCYtXkPD5pF3ZjYeDRl10=', '2022-03-18 03:41:20.209057', 0, 'wr', 'wr', '', '', 1, 1, '2022-03-03 14:16:26.000000');
+(1, 'pbkdf2_sha256$320000$CrzHTUoPuEahVEYPEgEOK3$jwMahLAkM3y7maw8Sz2G6dt+v5WrmP/pnqagZPd2ksA=', '2022-03-30 08:17:41.225333', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2022-02-03 07:04:07.313560'),
+(10, 'pbkdf2_sha256$320000$qGzQc4L3kJueKJ5kLq3Fry$hCKIicSMw4NEjkqZ5zptAiCLpu3It1s3aWIpBPOxWEE=', '2022-03-31 11:36:15.463876', 0, 'adminrektor1', '', '', '', 1, 1, '2022-03-25 14:59:53.000000'),
+(11, 'pbkdf2_sha256$320000$IBPLMok8vlMKnWMIdDDL9m$vdELpAh2oa/3qnOy0zs5j3CRm4Idsjxmn8CMDdjkABY=', '2022-03-31 11:54:43.896474', 0, 'adminkaro1', '', '', '', 1, 1, '2022-03-25 15:01:35.000000'),
+(12, 'pbkdf2_sha256$320000$OgOJc7Wd7TX6RMYS6zpQjf$Mjh0FAiWwUHqnf9JLgSZYN0eALwUwkbbKhSfFjQHFrM=', '2022-03-25 15:18:20.524536', 0, 'adminwr1', '', '', '', 1, 1, '2022-03-25 15:02:45.000000'),
+(13, 'pbkdf2_sha256$320000$5FRJDpoKM6h2lS1jRy98FF$fwEu7lsSL8PNoGk3ljkOa3/xIjrmnXFIYLYvMy6VN8U=', '2022-03-31 11:57:55.549021', 0, 'adminkabag1', '', '', '', 1, 1, '2022-03-25 15:03:44.000000'),
+(14, 'pbkdf2_sha256$320000$pBNNB8sUWbW20rbwrcvUWJ$21d+bVhRtaISS2ffmcuOTmCeGC+64C7R9WGZDsTqS7w=', '2022-03-25 15:19:00.269194', 0, 'admindekanfs', '', '', '', 1, 1, '2022-03-25 15:04:08.000000'),
+(16, 'pbkdf2_sha256$320000$9OoE5IvTyiChzlL8G6Dmfk$5iYx4at3JNN9m6VGIeW041lShAOUGISODKnZ2kB4aSs=', '2022-03-31 11:58:32.274697', 0, 'adminadum1', '', '', '', 1, 1, '2022-03-25 15:09:25.000000');
 
 -- --------------------------------------------------------
 
@@ -185,10 +187,12 @@ CREATE TABLE `auth_user_groups` (
 --
 
 INSERT INTO `auth_user_groups` (`id`, `user_id`, `group_id`) VALUES
-(5, 6, 3),
-(6, 7, 5),
-(7, 8, 1),
-(8, 9, 2);
+(10, 10, 1),
+(11, 11, 2),
+(12, 12, 2),
+(13, 13, 3),
+(14, 14, 3),
+(15, 16, 5);
 
 -- --------------------------------------------------------
 
@@ -277,7 +281,32 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (51, '2022-03-18 03:09:21.073207', '9', 'Kabag Akademik', 1, '[{\"added\": {}}]', 15, 1),
 (52, '2022-03-18 03:09:29.035438', '10', 'Dekan Syariah', 1, '[{\"added\": {}}]', 15, 1),
 (53, '2022-03-18 03:09:37.321404', '11', 'Dekan FTK', 1, '[{\"added\": {}}]', 15, 1),
-(54, '2022-03-18 03:21:18.820541', '12', 'adum', 1, '[{\"added\": {}}]', 15, 1);
+(54, '2022-03-18 03:21:18.820541', '12', 'adum', 1, '[{\"added\": {}}]', 15, 1),
+(55, '2022-03-25 14:56:52.753304', '2', 'wrkaro', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 3, 1),
+(56, '2022-03-25 14:57:05.820724', '3', 'dekankabag', 2, '[{\"changed\": {\"fields\": [\"Name\"]}}]', 3, 1),
+(57, '2022-03-25 14:57:40.665796', '7', 'adum', 3, '', 4, 1),
+(58, '2022-03-25 14:57:40.669636', '6', 'dekan', 3, '', 4, 1),
+(59, '2022-03-25 14:57:40.672174', '8', 'rektor', 3, '', 4, 1),
+(60, '2022-03-25 14:57:40.674172', '9', 'wr', 3, '', 4, 1),
+(61, '2022-03-25 14:59:53.986844', '10', 'adminrektor1', 1, '[{\"added\": {}}]', 4, 1),
+(62, '2022-03-25 15:00:03.275978', '10', 'adminrektor1', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 4, 1),
+(63, '2022-03-25 15:00:44.638156', '10', 'adminrektor1', 2, '[{\"changed\": {\"fields\": [\"Staff status\"]}}]', 4, 1),
+(64, '2022-03-25 15:00:58.762119', '10', 'adminrektor1', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 4, 1),
+(65, '2022-03-25 15:01:35.485976', '11', 'adminkaro1', 1, '[{\"added\": {}}]', 4, 1),
+(66, '2022-03-25 15:01:43.653479', '11', 'adminkaro1', 2, '[{\"changed\": {\"fields\": [\"Staff status\", \"Groups\"]}}]', 4, 1),
+(67, '2022-03-25 15:02:08.583469', '10', 'adminrektor1', 2, '[{\"changed\": {\"fields\": [\"password\"]}}]', 4, 1),
+(68, '2022-03-25 15:02:19.862206', '10', 'adminrektor1', 2, '[]', 4, 1),
+(69, '2022-03-25 15:02:26.337967', '11', 'adminkaro1', 2, '[]', 4, 1),
+(70, '2022-03-25 15:02:45.799266', '12', 'adminwr1', 1, '[{\"added\": {}}]', 4, 1),
+(71, '2022-03-25 15:02:52.361387', '12', 'adminwr1', 2, '[{\"changed\": {\"fields\": [\"Staff status\", \"Groups\"]}}]', 4, 1),
+(72, '2022-03-25 15:03:44.353661', '13', 'adminkabag1', 1, '[{\"added\": {}}]', 4, 1),
+(73, '2022-03-25 15:03:52.875789', '13', 'adminkabag1', 2, '[{\"changed\": {\"fields\": [\"Staff status\", \"Groups\"]}}]', 4, 1),
+(74, '2022-03-25 15:04:08.969588', '14', 'admindekanfs', 1, '[{\"added\": {}}]', 4, 1),
+(75, '2022-03-25 15:04:16.224388', '14', 'admindekanfs', 2, '[{\"changed\": {\"fields\": [\"Staff status\", \"Groups\"]}}]', 4, 1),
+(76, '2022-03-25 15:05:07.587322', '15', 'adminadum1', 1, '[{\"added\": {}}]', 4, 1),
+(77, '2022-03-25 15:05:27.791980', '15', 'adminadum1', 3, '', 4, 1),
+(78, '2022-03-25 15:09:25.734342', '16', 'adminadum1', 1, '[{\"added\": {}}]', 4, 1),
+(79, '2022-03-25 15:09:32.875794', '16', 'adminadum1', 2, '[{\"changed\": {\"fields\": [\"Staff status\", \"Groups\"]}}]', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -368,7 +397,14 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (35, 'elisaapp', '0017_alter_disposisi2_surat_id', '2022-03-17 02:58:20.240108'),
 (36, 'elisaapp', '0018_alter_disposisi3_surat_id_alter_luaran_nomor_masuk', '2022-03-17 03:27:30.819720'),
 (37, 'elisaapp', '0019_alter_disposisi1_catatan', '2022-03-18 03:15:27.682933'),
-(38, 'elisaapp', '0020_alter_disposisi1_catatan', '2022-03-18 03:17:47.036435');
+(38, 'elisaapp', '0020_alter_disposisi1_catatan', '2022-03-18 03:17:47.036435'),
+(39, 'elisaapp', '0021_alter_disposisi1_catatan', '2022-03-21 06:58:03.965736'),
+(40, 'elisaapp', '0022_alter_disposisi1_catatan', '2022-03-21 07:16:48.784801'),
+(41, 'elisaapp', '0023_alter_disposisi1_catatan', '2022-03-21 09:33:43.691011'),
+(42, 'elisaapp', '0024_alter_disposisi1_catatan_alter_disposisi2_catatan_and_more', '2022-03-21 09:37:50.965926'),
+(43, 'elisaapp', '0025_alter_luaran_upload_luaran', '2022-03-21 09:48:29.990447'),
+(44, 'elisaapp', '0026_delete_user', '2022-03-30 03:15:13.357385'),
+(45, 'elisaapp', '0027_delete_role', '2022-03-30 03:15:13.371349');
 
 -- --------------------------------------------------------
 
@@ -387,7 +423,6 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('6q8prfrt3xh90jgcoeu8pgky1vfjte53', '.eJxVjDsOwyAQRO9CHSEvHy2kTJ8zWAsLwUkEkrErK3ePLblIqpHmvZlNjLQuZVx7mseJxVWguPx2geIr1QPwk-qjydjqMk9BHoo8aZf3xul9O92_g0K97GulbAJE1BYU4uA4Ow2DUWi1M8EbsyewjZwRCFhhDm4IhgIAk_dGfL6auDaG:1nV3m1:A1RY0fM3utugwWaDdC9PeYHjnrp1UaAzI0A0h8AS53g', '2022-04-01 03:59:33.503693'),
 ('qvs1qy04up8isk8ncma4m8cliz67v5ii', '.eJxVjEEOwiAQRe_C2pCBgRRcuvcMZIBBqgaS0q6Md9cmXej2v_f-SwTa1hq2wUuYszgLJU6_W6T04LaDfKd26zL1ti5zlLsiDzrktWd-Xg7376DSqN-aAHVJpSSC5CwiMIPPYJXGaIzSBpWf2BWr9ZQJwCYFxRsqEdGyQ_H-ANrAN1E:1nM2mP:PQVcV1idNushxhg1eRwypsnUOuGx3yOe40zPFT5LDYQ', '2022-03-07 07:06:41.357498');
 
 -- --------------------------------------------------------
@@ -406,16 +441,6 @@ CREATE TABLE `elisaapp_disposisi1` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `elisaapp_disposisi1`
---
-
-INSERT INTO `elisaapp_disposisi1` (`id`, `tanggal_disposisi`, `catatan`, `keterangan_id_id`, `surat_id_id`, `tujuan_id`, `status`) VALUES
-(10, '2022-03-16 12:50:37.817236', 'haloo', 1, 12, 1, 1),
-(11, '2022-03-17 14:49:25.040227', 'haloo', 3, 13, 3, 1),
-(12, '2022-03-18 02:52:52.910055', 'cari tau', 2, 14, 2, 1),
-(13, '2022-03-18 03:23:09.296878', '-', 8, 15, 12, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -432,16 +457,6 @@ CREATE TABLE `elisaapp_disposisi2` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `elisaapp_disposisi2`
---
-
-INSERT INTO `elisaapp_disposisi2` (`id`, `tanggal_disposisi`, `catatan`, `keterangan_id_id`, `surat_id_id`, `tujuan_id`, `status`) VALUES
-(8, '2022-03-17 02:59:25.849039', 'haloo', 1, 10, 2, 1),
-(9, '2022-03-17 14:49:48.520418', 'entah', 4, 11, 4, 1),
-(10, '2022-03-18 02:55:57.728203', 'selesai', 8, 12, 4, 1),
-(11, '2022-03-18 03:58:50.635224', 'cari tau', 1, 13, 6, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -457,16 +472,6 @@ CREATE TABLE `elisaapp_disposisi3` (
   `tujuan_id` bigint(20) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `elisaapp_disposisi3`
---
-
-INSERT INTO `elisaapp_disposisi3` (`id`, `tanggal_disposisi`, `catatan`, `keterangan_id_id`, `surat_id_id`, `tujuan_id`, `status`) VALUES
-(3, '2022-03-17 14:50:15.355888', 'tes', 6, 9, 1, 1),
-(4, '2022-03-18 02:57:29.907648', '-', 2, 8, 4, 0),
-(5, '2022-03-18 02:57:40.860406', '-', 2, 10, 4, 0),
-(6, '2022-03-18 03:59:23.124645', '-', 2, 11, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -541,25 +546,6 @@ CREATE TABLE `elisaapp_luaran` (
   `nomor_masuk_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `elisaapp_luaran`
---
-
-INSERT INTO `elisaapp_luaran` (`id`, `nomor_keluar`, `keterangan_disposisi1`, `catatan_disposisi1`, `keterangan_disposisi2`, `catatan_disposisi2`, `keterangan_disposisi3`, `catatan_disposisi3`, `upload_luaran`, `nomor_masuk_id`) VALUES
-(1, '123', 'Kirim Utusan', 'haloo', 'Mohon Petunjuk', 'entah', 'Siapkan Konsep', 'tes', 'luaran/week_9_simplification.pdf', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `elisaapp_role`
---
-
-CREATE TABLE `elisaapp_role` (
-  `id` bigint(20) NOT NULL,
-  `nama_role` varchar(50) NOT NULL,
-  `fase` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 -- --------------------------------------------------------
 
 --
@@ -579,29 +565,6 @@ CREATE TABLE `elisaapp_surat` (
   `kontak_pic` varchar(128) DEFAULT NULL,
   `nama_pic` varchar(50) DEFAULT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `elisaapp_surat`
---
-
-INSERT INTO `elisaapp_surat` (`id`, `tanggal_surat`, `tanggal_masuk`, `estimasi_deadline`, `perihal`, `nomor_surat`, `email_pic`, `file_surat`, `instansi_asal`, `kontak_pic`, `nama_pic`, `status`) VALUES
-(12, '2022-03-05', '2022-03-16 12:50:19.282909', '2022-03-12', 'undangan', '1231', 'putraaji@gmail.com', 'surat/SURAT_BILYA.pdf', 'unram', '+6282247709642', 'gilang', 1),
-(13, '2022-03-12', '2022-03-17 14:48:34.087356', '2022-03-19', 'pembukaan acara', '2131', 'gilang@gmail.com', 'surat/Jadwal_UAS_Semester_Gasal_2021-2022.pdf', 'telkom', '+6281290094490', 'gilang', 1),
-(14, '2022-03-18', '2022-03-18 02:51:18.642765', '2022-03-18', 'coba lagi', '12341', 'mai@mail.com', 'surat/1.ClassOutline.pdf', 'enath', '+62812334456', 'dia', 1),
-(15, '2022-03-18', '2022-03-18 03:12:43.015461', '2022-03-19', 'penutupan acara', '14', 'putraaji@gmail.com', 'surat/theory-c03.pdf', 'telkom', '+628290094490', 'putra', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `elisaapp_user`
---
-
-CREATE TABLE `elisaapp_user` (
-  `id` bigint(20) NOT NULL,
-  `nama_user` varchar(100) NOT NULL,
-  `password_user` varchar(25) NOT NULL,
-  `role_id_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -728,23 +691,10 @@ ALTER TABLE `elisaapp_luaran`
   ADD KEY `elisaapp_luaran_nomor_masuk_id_83da538b_fk_elisaapp_` (`nomor_masuk_id`);
 
 --
--- Indexes for table `elisaapp_role`
---
-ALTER TABLE `elisaapp_role`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `elisaapp_surat`
 --
 ALTER TABLE `elisaapp_surat`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `elisaapp_user`
---
-ALTER TABLE `elisaapp_user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `elisaapp_user_role_id_id_e0c70f2f_fk_elisaapp_role_id` (`role_id_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -772,13 +722,13 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `auth_user_user_permissions`
@@ -790,7 +740,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -802,25 +752,25 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `elisaapp_disposisi1`
 --
 ALTER TABLE `elisaapp_disposisi1`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `elisaapp_disposisi2`
 --
 ALTER TABLE `elisaapp_disposisi2`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `elisaapp_disposisi3`
 --
 ALTER TABLE `elisaapp_disposisi3`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `elisaapp_jabatan`
@@ -838,25 +788,13 @@ ALTER TABLE `elisaapp_keterangan`
 -- AUTO_INCREMENT for table `elisaapp_luaran`
 --
 ALTER TABLE `elisaapp_luaran`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `elisaapp_role`
---
-ALTER TABLE `elisaapp_role`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `elisaapp_surat`
 --
 ALTER TABLE `elisaapp_surat`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `elisaapp_user`
---
-ALTER TABLE `elisaapp_user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
@@ -925,12 +863,6 @@ ALTER TABLE `elisaapp_disposisi3`
 --
 ALTER TABLE `elisaapp_luaran`
   ADD CONSTRAINT `elisaapp_luaran_nomor_masuk_id_83da538b_fk_elisaapp_` FOREIGN KEY (`nomor_masuk_id`) REFERENCES `elisaapp_disposisi3` (`id`);
-
---
--- Constraints for table `elisaapp_user`
---
-ALTER TABLE `elisaapp_user`
-  ADD CONSTRAINT `elisaapp_user_role_id_id_e0c70f2f_fk_elisaapp_role_id` FOREIGN KEY (`role_id_id`) REFERENCES `elisaapp_role` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -44,11 +44,18 @@ def input_surat(request):
         return render(request,'input_surat.html', konteks)
 
 def dashboard(request):
-    surats = Surat.objects.filter(status=0)
-    diss1 = Disposisi1.objects.filter(status=0)
-    diss2 = Disposisi2.objects.filter(status=0)
-    diss3 = Disposisi3.objects.filter(status=0)
-    diss4 = Luaran.objects.all()
+    if "keyword" in request.POST:
+        surats = Surat.objects.filter(status=0, nomor_surat__contains=request.POST.get("keyword"))
+        diss1 = Disposisi1.objects.filter(status=0, surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss2 = Disposisi2.objects.filter(status=0, surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss3 = Disposisi3.objects.filter(status=0, surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss4 = Luaran.objects.filter(nomor_masuk__surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+    else:
+        surats = Surat.objects.filter(status=0)
+        diss1 = Disposisi1.objects.filter(status=0)
+        diss2 = Disposisi2.objects.filter(status=0)
+        diss3 = Disposisi3.objects.filter(status=0)
+        diss4 = Luaran.objects.all()
 
     konteks = {
         'surats' : surats,
@@ -63,11 +70,19 @@ def dashboard(request):
 @login_required(login_url=settings.LOGIN_URL)
 def dashAdmin(request):
     grup = request.user.groups.all().first()
-    surats = Surat.objects.filter(status=0)
-    diss1 = Disposisi1.objects.filter(status=0)
-    diss2 = Disposisi2.objects.filter(status=0)
-    diss3 = Disposisi3.objects.filter(status=0)
-    diss4 = Luaran.objects.all()
+
+    if "keyword" in request.POST:
+        surats = Surat.objects.filter(status=0, nomor_surat__contains=request.POST.get("keyword"))
+        diss1 = Disposisi1.objects.filter(status=0, surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss2 = Disposisi2.objects.filter(status=0, surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss3 = Disposisi3.objects.filter(status=0, surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        diss4 = Luaran.objects.filter(nomor_masuk__surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+    else:
+        surats = Surat.objects.filter(status=0)
+        diss1 = Disposisi1.objects.filter(status=0)
+        diss2 = Disposisi2.objects.filter(status=0)
+        diss3 = Disposisi3.objects.filter(status=0)
+        diss4 = Luaran.objects.all()
 
     konteks = {
         'surats' : surats,
@@ -82,11 +97,14 @@ def dashAdmin(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def arsip(request):
+    surats = Luaran.objects.all()
+
     grup = request.user.groups.all().first()
     if grup.name != "adum":
         return redirect('/dashboard-admin/')
     
-    surats = Luaran.objects.all()
+    if "keyword" in request.POST:
+        surats = Luaran.objects.filter(nomor_masuk__surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
 
     konteks = {
         'surats' : surats,
@@ -98,7 +116,20 @@ def arsip(request):
 @login_required(login_url=settings.LOGIN_URL)
 def rektor(request):
     grup = request.user.groups.all().first()
-    if request.POST:
+
+    if "keyword" in request.POST:
+        surats = Surat.objects.filter(status=0, nomor_surat__contains=request.POST.get("keyword"))
+        form = formDisposisi1()
+
+        konteks = {
+            'form' : form,
+            'surats' : surats,
+            'grup' : grup,
+        }
+
+        return render(request, 'disposisi.html', konteks)
+
+    elif request.POST:
         form = formDisposisi1(request.POST)
         if form.is_valid():                
             surat = Surat.objects.get(id=request.POST.get("surat_id"))
@@ -154,7 +185,20 @@ def rektor(request):
 @login_required(login_url=settings.LOGIN_URL)
 def wr(request):
     grup = request.user.groups.all().first()
-    if request.POST:
+
+    if "keyword" in request.POST:
+        surats = Disposisi1.objects.filter(status=0, surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        form = formDisposisi2()
+
+        konteks = {
+            'form' : form,
+            'surats' : surats,
+            'grup' : grup,
+        }
+
+        return render(request, 'disposisi.html', konteks)
+
+    elif request.POST:
         form = formDisposisi2(request.POST)
         if form.is_valid():
             surat = Disposisi1.objects.get(id=request.POST.get("surat_id"))
@@ -198,7 +242,20 @@ def wr(request):
 
 def dekan(request):
     grup = request.user.groups.all().first()
-    if request.POST:
+
+    if "keyword" in request.POST:
+        surats = Disposisi2.objects.filter(status=0, surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        form = formDisposisi3()
+
+        konteks = {
+            'form' : form,
+            'surats' : surats,
+            'grup' : grup,
+        }
+
+        return render(request, 'disposisi.html', konteks)
+
+    elif request.POST:
         form = formDisposisi3(request.POST)
         if form.is_valid():
             surat = Disposisi2.objects.get(id=request.POST.get("surat_id"))
@@ -248,7 +305,18 @@ def output(request):
     if grup.name != 'adum':
         return redirect('/dashboard-admin/')
 
-    if request.POST:
+    if "keyword" in request.POST:
+        surats = Disposisi3.objects.filter(status=0, surat_id__surat_id__surat_id__nomor_surat__contains=request.POST.get("keyword"))
+        form = formLuaran()
+
+        konteks = {
+            'form' : form,
+            'surats' : surats,
+        }
+
+        return render(request, 'output.html', konteks)
+
+    elif request.POST:
         form = formLuaran(request.POST, request.FILES)
         if form.is_valid():
             surat = Disposisi3.objects.get(id=request.POST.get("nomor_masuk"))
@@ -281,69 +349,11 @@ def output(request):
 
 
 # fungsi nyoba nyoba
-# @login_required(login_url=settings.LOGIN_URL)
-# def rektor(request):
-#     grup = request.user.groups.all().first()
-#     if request.POST:
-#         form = formDisposisi1(request.POST)
-#         if form.is_valid():                
-#             surat = Surat.objects.get(id=request.POST.get("surat_id"))
-#             surat.status = 1
-#             surat.save()
-#             form.save() 
-#             if request.POST.get("keterangan_id") == '8':
-#                 # simpan ke disposisi2
-#                 surat = Disposisi1.objects.get(surat_id_id=request.POST.get("surat_id"))
-#                 idDis1 = surat.id
-#                 surat.status = 1
-#                 surat.save()
-#                 Disposisi2.objects.create(
-#                     surat_id_id = surat.id,
-#                     keterangan_id_id = surat.keterangan_id_id,
-#                     tujuan_id = surat.tujuan_id,
-#                 )
-
-#                 # simpan ke disposisi 3
-#                 surat = Disposisi2.objects.get(surat_id_id=idDis1)
-#                 surat.status = 1
-#                 surat.save()
-#                 Disposisi3.objects.create(
-#                     surat_id_id = surat.id,
-#                     keterangan_id_id = surat.keterangan_id_id,
-#                     tujuan_id = surat.tujuan_id,
-#                 )
-            
-#             form = formDisposisi1()
-#             pesan = "Surat berhasil didisposisi"
-#             surats = Surat.objects.filter(status=0)
-
-#             konteks = {
-#                 'form' : form,
-#                 'pesan' : pesan,
-#                 'surats' : surats,
-#                 'grup' : grup,
-#             }
-
-#             return render(request, 'disposisi.html', konteks)
-#     else:
-#         surats = Surat.objects.filter(status=0)
-#         form = formDisposisi1()
-
-#         konteks = {
-#             'form' : form,
-#             'surats' : surats,
-#             'grup' : grup,
-#         }
-
-#         return render(request, 'disposisi.html', konteks)
-
 def coba(request):
-    surats = Disposisi3.objects.filter(status=0)
-    form = formLuaran()
+    surats = Surat.objects.filter(perihal__contains="pembukaan")
 
     konteks = {
         'surats' : surats,
-        'form' : form,
     }
 
     return render(request, 'coba.html', konteks)

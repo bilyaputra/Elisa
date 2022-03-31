@@ -42,8 +42,8 @@
               {{ user }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a></li>
-              <div class="dropdown-divider"></div>
+              <!-- <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a></li>
+              <div class="dropdown-divider"></div> -->
               <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
             </ul>
           </li>
@@ -61,6 +61,14 @@
             <div class="alert alert-success">{{pesan}}</div>
           {% endif %}
           
+          <div class="col-4 mb-2">
+            <form class="d-flex" action="/disposisi/" method="post">
+                {% csrf_token %}
+                <input class="form-control me-2" name="keyword" type="search" placeholder="Masukkan Nomor Surat" aria-label="Search">
+                <button class="btn btn-secondary" type="submit">Search</button>
+              </form>
+          </div>
+
                 <table class="table table-bordered table-striped text-center">
                         <thead>
                             <tr>

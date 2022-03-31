@@ -3,7 +3,10 @@
 {% block content %}
 
 <div class="container">
-  {{form.as_p}}
+  
+  {% for surat in surats %}
+    <p>{{surat.id}}</p>
+  {% endfor %}
 
 </div>
 

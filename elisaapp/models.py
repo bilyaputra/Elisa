@@ -6,15 +6,6 @@ from django.db import models
 # Library buat phone number
 from phonenumber_field.modelfields import PhoneNumberField
 
-
-#ROLE
-class Role(models.Model):
-    nama_role = models.CharField(max_length=50)
-    fase = models.IntegerField(null=True)
-
-    def __str__(self):
-        return self.nama_role
-
 #KETERANGAN
 class Keterangan(models.Model):
     keterangan = models.CharField(max_length=50)
@@ -38,15 +29,6 @@ class Surat(models.Model):
 
     def __str__(self):
         return self.perihal
-
-#USER
-class User(models.Model):
-    nama_user = models.CharField(max_length=100)
-    password_user = models.CharField(max_length=25)
-    role_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nama_user
 
 #PEJABAT
 class Jabatan(models.Model):
