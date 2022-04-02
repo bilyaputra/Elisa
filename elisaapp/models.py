@@ -77,12 +77,6 @@ class Disposisi3(models.Model):
 class Luaran(models.Model):
     nomor_masuk = models.ForeignKey(Disposisi3, on_delete=models.CASCADE)
     nomor_keluar = models.CharField(max_length=50)
-    catatan_disposisi1 = models.CharField(max_length=50, null=True)
-    keterangan_disposisi1 = models.CharField(max_length=50)
-    catatan_disposisi2 = models.CharField(max_length=50, null=True)
-    keterangan_disposisi2 = models.CharField(max_length=50)
-    catatan_disposisi3 = models.CharField(max_length=50, null=True)
-    keterangan_disposisi3 = models.CharField(max_length=50)
     upload_luaran = models.FileField(upload_to='luaran/', null=True, blank=True)
 
     def __str__(self):

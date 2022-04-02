@@ -64,10 +64,4 @@ class formLuaran(ModelForm):
         widgets = {
             'nomor_masuk' : forms.TextInput({'class':'form-control'}),
             'nomor_keluar' : forms.TextInput({'class':'form-control'}),
-            'catatan_disposisi1' : forms.TextInput({'class':'form-control'}),
-            'keterangan_disposisi1' : forms.TextInput({'class':'form-control'}),
-            'catatan_disposisi2' : forms.TextInput({'class':'form-control'}),
-            'keterangan_disposisi2' : forms.TextInput({'class':'form-control'}),
-            'catatan_disposisi3' : forms.TextInput({'class':'form-control'}),
-            'keterangan_disposisi3' : forms.TextInput({'class':'form-control'}),
         }
